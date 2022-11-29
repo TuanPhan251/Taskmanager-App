@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, Navigate } from "react-router-dom";
+
+import HomePage from "./pages/HomePage";
+import CreateTaskPage from "./pages/CreateTaskPage";
+import UpdateTaskPage from "./pages/UpdateTaskPage";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/" element={<Navigate to="/tasks" />} />
+        <Route path="/tasks" element={<HomePage />} />
+        <Route path="/tasks/create" element={<CreateTaskPage />} />
+        <Route path="/tasks/:id/update" element={<UpdateTaskPage />} />
+      </Routes>
     </div>
   );
 }
